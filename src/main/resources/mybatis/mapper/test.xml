@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tongwen.dao.mapper.TestMapper">
+    <select id="showModel" resultType="com.tongwen.dao.model.TestModel">
+        select id,name from test where id = #{id}
+    </select>
+    <insert id="addModel" parameterType="com.tongwen.dao.model.TestModel"
+            useGeneratedKeys="true" keyProperty="id">  <!-- useGeneratedKeys="true", 用于自增字段 -->
+        insert into test ( name) values ( #{name})
+    </insert>
+    <update id="updateNameById" >
+        update test set name = #{name} where id = #{id}
+    </update>
+    <update id="update"  parameterType="com.tongwen.dao.model.TestModel">
+        update test set name = #{name} where id = #{id}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete from test where id=#{id}
+    </delete>
+</mapper>
